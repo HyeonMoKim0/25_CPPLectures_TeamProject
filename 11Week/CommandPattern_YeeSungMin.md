@@ -78,3 +78,14 @@ int main() {
     return 0;
 }
 ```
+- Light는 on(), off() 같은 실제 기능을 수행하는 클래스임
+- LightOnCommand와 LightOffCommand
+  - Light 객체를 참조로 저장함
+  - execute()에서 light.on() 또는 light.off()를 호출함
+- Button은 Command*만 알고 있는 상태
+  - setCommand()로 어떤 명령을 사용할지 주입받고 있음
+  - press()에서 단순히 execute()만 호출하고 있음
+- main()
+  - 명령 객체를 생성하고 있음
+  - 버튼에 해당 명령을 연결하고 있음
+  - 같은 버튼으로 “켜기 → 끄기” 동작을 자유롭게 교체하고 있음
