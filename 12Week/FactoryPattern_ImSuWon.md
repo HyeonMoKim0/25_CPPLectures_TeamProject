@@ -5,20 +5,20 @@
 - “어떤 객체를 만들어야 하는지” 결정하는 로직이 자주 바뀔 때
 - 클라이언트(사용자 코드)가 구체적인 클래스 이름을 몰라도 객체를 사용할 수 있게 하고 싶을 때
 
-##Client
+## Client
 - 어떤 객체를 만들어야 하는지 Factory에게 부탁한다.
 
-##SimpleFactory
+## SimpleFactory
 - 객체 생성만 담당하는 “공장 역할”
 - 내부에서 if/switch로 어떤 제품을 만들지 결정한다.
 
-##Product(제품)
+## Product(제품)
 - 공통 인터페이스(추상 클래스)
-##Concrete Product(구체 제품)
+## Concrete Product(구체 제품)
 - 실제로 만들어지는 클래스들 (Sword/Bow/Staff)
 
 ---
-#﻿Product – 모든 무기가 따라야 할 인터페이스
+#﻿ Product – 모든 무기가 따라야 할 인터페이스
 ```C++
 ﻿class Weapon {
 public:
@@ -27,7 +27,7 @@ public:
 };
 ```
 
-#﻿Concrete Product – 실제 무기들
+#﻿ Concrete Product – 실제 무기들
 ```C++
 ﻿class Sword : public Weapon {
 public:
@@ -51,7 +51,7 @@ public:
 };
 ```
 
-#﻿Simple Factory – 생성 전담
+#﻿ Simple Factory – 생성 전담
 ```C++
 ﻿class WeaponFactory {
 public:
@@ -68,7 +68,7 @@ public:
 };
 ```
 
-#﻿Client – 생성 요청만 함
+# ﻿Client – 생성 요청만 함
 ```C++
 ﻿Weapon* weapon = WeaponFactory::CreateWeapon(userChoice);
 weapon->Attack();
