@@ -1,11 +1,11 @@
 ```C++
-// 기존에 ExchangeMoney 클래스에서 getMoney()를 호출하면 getWon()을 호출하도록 했는데, 이 방식이 어색하게 느껴져서 KoreanMoney 클래스에 데이터를 담는 그릇을 없앰
 // 달러를 한국 원화로 변환하는 어댑터 패턴 예제
 #include <iostream>
 using namespace std;
 
 enum ISO {
 	USD = 840
+	// 각종 여러 나라 국가 코드 등등..
 };
 
 class KoreanMoney {
@@ -24,8 +24,6 @@ public:
 
 	double getMoney() const { return dollar; }
 	ISO getISOCode() const { return ISOCode; }
-
-	//double operator()() const { return getMoney(); } // 다른 통화 클래스들과의 일관성을 위한 연산자 오버로딩
 };
 
 template <typename T>
@@ -45,7 +43,7 @@ public:
 	virtual ~ExchangeMoney() = default;
 
 	virtual double getMoney() override {
-		exchange(); // getMoney() 호출할 때마다 환전하는 것이 어댑터 패턴의 일반적인 흐름이자, 실시간 환전 측면에서 맞음
+		exchange(); // 해당 함수를 호출할 때마다 환전하는 것이 어댑터 패턴의 일반적인 흐름
 		return exchangeMoney;
 	}
 
@@ -60,7 +58,7 @@ public:
 			exchangeRate = (double)1465.00; // 1 USD = 1465 KRW
 			break;
 		default:
-			cout << "지원하지 않는 통화로, 현재 환전이 불가능합니다.\n 프로그램을 종료합니다." << endl;
+			cout << "현재 미지원하는 통화로, 환전 불가능.\n 프로그램 종료" << endl;
 			exit(1);
 			break;
 		}
@@ -80,7 +78,7 @@ int main() {
 	cout << myWon1->getMoney() << "원 환전 완료" << endl;
 	cout << endl;
 
-	KoreanMoney* myWon2 = new ExchangeMoney<USDMoney>(USDMoney(150)); // 외화 객체 선언 없이, 어댑터로 환전된 원화 객체 생성
+	KoreanMoney* myWon2 = new ExchangeMoney<USDMoney>(USDMoney(150)); // 외화 객체 선언 없이 생성
 	cout << myWon2->getMoney() << "원 환전 완료" << endl;
 
 	delete myWon1;
