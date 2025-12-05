@@ -2,7 +2,6 @@
 // 기존에 ExchangeMoney 클래스에서 getMoney()를 호출하면 getWon()을 호출하도록 했는데, 이 방식이 어색하게 느껴져서 KoreanMoney 클래스에 데이터를 담는 그릇을 없앰
 // 달러를 한국 원화로 변환하는 어댑터 패턴 예제
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 enum ISO {
