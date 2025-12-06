@@ -1,0 +1,1 @@
+- 김현모 - 어댑터 패턴(./KimHyeonMo_AddapterPattern.md)
